@@ -5,12 +5,12 @@ def get_intent(user_input):
 
     # Define patterns and corresponding intents
     patterns = {
-        r"(hello|hi|hey)": "greeting",
-        r"(what can you do)": "ability",
-        r"(bye|goodbye)": "farewell",
+        r"(hello|hi|hey|howdy)": "greeting",
+        r"(?:what can you do\??|(?:tell me your|what are your) abilit(?:y|ies))": "ability",
+        r"(bye|goodbye|see you)": "farewell",
         r"(\b(?:search|find)\b.*)": "search",
         r"(\b(?:book|reserve)\b.*)": "booking",
-        r"(\b(?:weather|forecast)\b.*)": "weather",
+        r"(\b(?:weather|forecast|climate)\b.*)": "weather",
         r"(\b(?:help|support)\b.*)": "help"
     }
 
@@ -21,8 +21,3 @@ def get_intent(user_input):
     
     # If no match is found, assume it as a general inquiry intent
     return "inquiry"
-
-# Test the intent recognition function
-user_input = input("User Input: ")
-intent = get_intent(user_input)
-print("Intent:", intent)
